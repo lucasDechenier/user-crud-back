@@ -7,21 +7,15 @@ const app = express();
 
 app.use(cors())
 
-const userRouter = require('./routes/userRouter'); // Importando as rotas user
-const adminRouter = require('./routes/adminRouter') ; // Importando as rotas admin
-const scheduleRouter = require('./routes/scheduleRouter') ; // Importando as rotas admin
+const studentRouter = require('./routes/studentRouter'); // Importando as rotas user
+app.use('/student', express.json(), studentRouter);
 
-app.use('/user', express.json(), userRouter);
-
-app.use('/admin', express.json(), adminRouter);
-
-app.use('/schedule', express.json(), scheduleRouter);
 
 app.use('/', (req, res) =>{ 
     res.send("Página inicial");
 });
 
 app.listen(process.env.PORT, ()=>{
-    console.log("Servidor Ligado");
+    console.log(`Servidor Ligado na porta: ${process.env.PORT}`);
 })
 
