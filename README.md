@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-	Essa API tem como função requisições e respostas para um sistema de agendamentos
+	Essa API tem como função requisições e respostas para um sistema de controle de notas
 </p>
 
 <p align="center">
@@ -26,15 +26,13 @@
 
 - [Node Express](https://expressjs.com/)
 - [dotenv](https://www.npmjs.com/package/dotenv)
-- [jsonwebtoken](https://jwt.io/)
-- [bcryptjs](https://www.npmjs.com/package/bcrypt)
 
 ## 🚀 Executando
 
 Clone o projeto e acesso a pasta dos arquivos
 
 ```bash
-$ git clone https://github.com/v1ctormoll/med_saude.git
+$ git clone https://github.com/lucasDechenier/user-crud-back.git
 ```
 
 Siga as etapas para instalação
