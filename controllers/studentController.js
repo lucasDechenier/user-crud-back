@@ -8,7 +8,7 @@ studentController = {
     })
     if (selectedStudent) return res.status(400).send({message: 'Aluno com mesmo nome já criado'})
     const {firstNote, secondNote, name} = req.body
-    const average = (firstNote + secondNote) / 2.0
+    const average = (parseFloat(firstNote) + parseFloat(secondNote)) / 2.0
 
     let situation = ''
 
@@ -19,8 +19,8 @@ studentController = {
 
     const student = new Student({
       name: name,
-      firstNote: firstNote || 0,
-      secondNote: secondNote || 0,
+      firstNote: parseFloat(firstNote) || 0,
+      secondNote: parseFloat(secondNote) || 0,
       situation: situation,
       average: average
     })
@@ -136,14 +136,20 @@ studentController = {
     console.log(id)
     if (selectedStudent && selectedStudent._id.toString() !== id) return res.status(400).send({message: 'Aluno com mesmo nome já criado'})
 
-    const average = (firstNote + secondNote) / 2.0
+    const average = (parseFloat(firstNote) + parseFloat(secondNote)) / 2.0
     let situation = ''
 
     if(average >= 7) situation = 'approved'
     else if(average >=4) situation = 'recovery'
     else situation = 'disapproved'
 
-    Student.findByIdAndUpdate(id, {name, firstNote, secondNote, situation, average}, {returnDocument:'after'}, (error, student) => {
+    Student.findByIdAndUpdate(id, {
+        name, 
+        firstNote: parseFloat(firstNote), 
+        secondNote: parseFloat(secondNote), 
+        situation, 
+        average
+      }, {returnDocument:'after'}, (error, student) => {
       if(error){
         return res.status(500).send({
           message: "Erro ao tentar atualizar o aluno de id = " + id,

@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 
 const studentSchema = mongoose.Schema({
-    name: {type:String, required: true, minlength: 3, maxlength: 50},
+    name: {type:String, required: true, minlength: 0, maxlength: 50},
     firstNote: {type: Number, required: true, min: 0, max: 10 },
     secondNote: {type: Number, required: true, min: 0, max: 10 },
     situation: {type: String, required: true, lowercase: true, trim: true},
